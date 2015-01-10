@@ -8,9 +8,11 @@ cd "/etc/nginx/sites-enabled"
 case "$1" in
     start)
         ln -s ../sites-available/000-maintenance 000-maintenance
+        /etc/init.d/nginx reload
         ;;
     stop)
         rm 000-maintenance
+        /etc/init.d/nginx reload
         ;;
     *)
         echo "Usage: $0 {start|stop}"
