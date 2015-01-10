@@ -43,13 +43,13 @@ fi
 echo "copying files"
  ./index.html $PATH_TO_WWW/index.html
 
-cat ./000-maintenance | sed -e "s|{{servernames}}|$1|" > /tmp/maintenance.conf
-cat /tmp/maintenance.conf | sed -e "s|{{root}}|$PATH_TO_WWW|" > /tmp/maintenance.conf
+cat ./000-maintenance | sed -e "s|{{servernames}}|$1|" > /tmp/maintenance.conf.a
+cat /tmp/maintenance.conf.a | sed -e "s|{{root}}|$PATH_TO_WWW|" > /tmp/maintenance.conf.b
 
-cat ./000-maintenance | sed -e "s|ssl_certificate;|$SSL_CERT|" > /tmp/maintenance.conf
-cat /tmp/maintenance.conf | sed -e "s|ssl_certificate_key;|$SSL_KEY|" > /tmp/maintenance.conf
+cat ./000-maintenance.conf.b | sed -e "s|ssl_certificate;|$SSL_CERT|" > /tmp/maintenance.conf.a
+cat /tmp/maintenance.conf.a | sed -e "s|ssl_certificate_key;|$SSL_KEY|" > /tmp/maintenance.conf.b
 
-cp /tmp/maintenance.conf /etc/nginx/sites-available/000-maintenance
+cp /tmp/maintenance.conf.b /etc/nginx/sites-available/000-maintenance
 echo "DONE!"
 echo ""
 echo "installed nginx-maintenance stat with /etc/init.d/maintenance start"
