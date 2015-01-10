@@ -30,7 +30,7 @@ if [ "$#" -eq 3 ]; then
         echo "ERROR! Wrong path to ssl cert or key"
         exit 1
     fi
-    SSL_CERT="ssl_certificate_key $2;"
+    SSL_CERT="ssl_certificate $2;"
     SSL_KEY="ssl_certificate_key $3;"
 fi
 
