@@ -47,8 +47,6 @@ cat /tmp/maintenance.conf.a | sed -e "s|{{root}}|$PATH_TO_WWW|" > /tmp/maintenan
 cat /tmp/maintenance.conf.b | sed -e "s|ssl_certificate;|$SSL_CERT|" > /tmp/maintenance.conf.a
 cat /tmp/maintenance.conf.a | sed -e "s|ssl_certificate_key;|$SSL_KEY|" > /tmp/maintenance.conf.b
 
-exit 0
-
 echo "copying files"
 cp ./index.html $PATH_TO_WWW/index.html
 
