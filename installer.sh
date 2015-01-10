@@ -44,11 +44,11 @@ cp ./maintenance /etc/init.d/maintenance
 cp ./000-maintenance /etc/nginx/sites-available/000-maintenance
 cp ./index.html $PATH_TO_WWW/index.html
 
-cat ./000-maintenance | sed -e "s/{{servernames}}/$1/" > /tmp/maintenace.conf
-cat /tmp/maintenace.conf | sed -e "s/{{root}}/$PATH_TO_WWW/" > /tmp/maintenace.conf
+cat ./000-maintenance | sed -e "s/{{servernames}}/\$1/" > /tmp/maintenace.conf
+cat /tmp/maintenace.conf | sed -e "s/{{root}}/\$PATH_TO_WWW/" > /tmp/maintenace.conf
 
-cat ./000-maintenance | sed -e "s/ssl_certificate;/$SSL_CERT/" > /tmp/maintenace.conf
-cat /tmp/maintenace.conf | sed -e "s/ssl_certificate_key;/$SSL_KEY/" > /tmp/maintenace.conf
+cat ./000-maintenance | sed -e "s/ssl_certificate;/\$SSL_CERT/" > /tmp/maintenace.conf
+cat /tmp/maintenace.conf | sed -e "s/ssl_certificate_key;/\$SSL_KEY/" > /tmp/maintenace.conf
 
 cp /tmp/maintenace.conf /etc/nginx/sites-available/000-maintenance
 echo "DONE!"
