@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# nginx-maintenance init script
+
+cd "/etc/nginx/sites-enabled"
+
+case "$1" in
+    start)
+        ln -s ../sites-available/000-maintenance 000-maintenance
+        ;;
+    stop)
+        rm 000-maintenance
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,24 @@
+server {
+    listen		80;
+    server_name	{{servername}};
+    root /var/www/maintenance;
+    access_log  /var/log/nginx/maintenance.access.log;
+    error_log   /var/log/nginx/maintenance.error.log;
+
+    location / {
+        return 503;
+    }
+
+    error_page 503 @maintenance;
+
+    location @maintenance {
+        rewrite ^(.*)$ /index.html break;
+    }
+}
+
+server {
+    listen 443;
+    server_name {{servername}};
+
+
+}

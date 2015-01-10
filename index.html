@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Service is in maintenance</title>
+        <style media="screen">
+        *{
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 500;
+            line-height: 26.3999996185303px;
+        }
+        h1 {
+            font-size: 22px;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        .small {
+            font-size: 10px;
+        }
+        </style>
+
+    </head>
+    <body>
+        <center>
+            <h1>Maintenance</h1>
+            <h2 id="message"></h2>
+            <div>
+                <img id="image" src="#"/>
+                <h2 id="submessage">We try to be back as soon as we can. If you cant wait spend the devops a beer ;)</h2>
+            </div>
+            <div>yuno listen? And yes this site has style because of Helvetica!</div>
+            <iframe width="420" height="215" src="https://www.youtube.com/embed/waEC-8GFTP4" frameborder="0" allowfullscreen></iframe>        </center>
+    </body>
+    <script charset="utf-8">
+        function randomIntFromInterval(min,max)
+        {
+            return Math.floor(Math.random()*(max-min+1)+min);
+        }
+
+        var data =  [
+{"message":"Our ape is writing some code atm ","image":"http://media.tumblr.com/d0d096f3814170a77412a279f0c42613/tumblr_inline_nesrgoa1HY1raprkq.gif"},
+{"message":"We are deploying a new version right now","image":"http://media.tumblr.com/1c4d73f1ebacaa9602bd76c10a84212a/tumblr_inline_nesrklULIu1raprkq.gif"},
+{"message":"We are doing something like","image":"http://i.imgur.com/LBSpd6y.gif"},
+{"message":"Service is down at the moment?","image":"http://i.imgur.com/m5fZJsr.gif"},
+{"message":"We are deploying","image":"http://media.tumblr.com/217b27a12ad5263ea11f25c9e880c17e/tumblr_inline_nbk7agC7FJ1raprkq.gif"},
+{"message":"switch the button to speed up the upgrade","image":"http://media.tumblr.com/7f6c38418dadcc2851d17c859bbbdab5/tumblr_inline_nbk7zkS5FX1raprkq.gif"},
+{"message":"We are rolling out a new software Version.","image":"http://media.tumblr.com/30878c8efef6e404f2fab0662257cd0a/tumblr_inline_nbk8ntSvHQ1raprkq.gif"},
+{"message":"Deploying packages is easy!","image":"http://i.imgur.com/04xJPDP.gif"},
+{"message":"The Ketchup is empty, we are on it.","image":"http://media.tumblr.com/f28e7eb63a61c472cc3bbcd88f685468/tumblr_inline_nbk6gr5j9T1raprkq.gif"},
+{"message":"This is how we are deploying!","image":"http://i.imgur.com/dtrkXQJ.gif"},
+{"message":"We are making this application a little bit better","image":"http://i.imgur.com/HO7CfCq.gif"},
+{"message":"Who has made the backups?","image":"http://media.tumblr.com/2b92f6025bf4713013e06d4e3bc3a3e4/tumblr_inline_na61zdYtTa1raprkq.gif"},
+{"message":"We try to fix this","image":"http://media.tumblr.com/6d8157e8b3fd9fe2ae9940bd87e47a4d/tumblr_inline_na61koZWk31raprkq.gif"},
+{"message":"We are on the way to fix this.","image":"http://media.tumblr.com/9b388f526f720c4cb9f102bf4e7b9afc/tumblr_inline_na61f1eSBD1raprkq.gif"},
+{"message":"The Service will be back soon.","image":"http://media.tumblr.com/10aff13002daf1d6db5f66d5e0804027/tumblr_inline_n9r90pNCjP1raprkq.gif"},
+{"message":"Lets bring some new code","image":"http://i.imgur.com/w0XLKqj.gif"},
+{"message":"This is Joe. Joe is deploying atm.","image":"http://i.imgur.com/LpzSS9k.gif"},
+{"message":"Deployment progress bar.","image":"http://i.imgur.com/rx5Cu2Q.gif"},
+{"message":"For aesthetical reasons we are building something new.","image":"http://i.imgur.com/8Lpsys5.gif"},
+{"message":"This deployment will be over 9000","image":"http://media.tumblr.com/8a6c73f706e74d397425f02a3fe16ab5/tumblr_inline_n4eqevcgIe1raprkq.gif"},
+{"message":"The hyper flux capacitor is broken. We are working on it.","image":"http://media.tumblr.com/e8d26e3d1bef71169ddab440b50e7765/tumblr_inline_n3zsvmvK761raprkq.gif"},
+{"message":"The code is revolting.","image":"http://i.imgur.com/Tt58c2w.gif"},
+{"message":"The new package is on the way!","image":"http://i.imgur.com/odAul03.gif"},
+{"message":"We work as fast as we can!","image":"http://media.tumblr.com/db571d2622cae58c5999217a3892e5d8/tumblr_inline_n2756mLbEv1raprkq.gif"},
+{"message":"We will fix this","image":"http://media.tumblr.com/7ea55f781ddbe9827e1c32d071604bba/tumblr_inline_n1h2a9LSXC1raprkq.gif"},
+{"message":"Thanks devops! You are so great!","image":"http://i.imgur.com/PsQttON.gif"},
+{"message":"Sorry, Igor takes a biobreak.","image":"http://media.tumblr.com/75dfa4e6b26307ea57b425d832538af5/tumblr_inline_n1h1w9xP6K1raprkq.gif"},
+{"message":"Just refresh the site","image":"http://media.tumblr.com/89da0e2aad1a9fe4161871e116152783/tumblr_inline_n141365uWo1raprkq.gif"},
+{"message":"We are down at the moment for maintenace.","image":"http://i.imgur.com/YLS1ufH.gif"},
+{"message":"Just doing some live changes.","image":"http://i.imgur.com/UjC1Khr.gif"},
+{"message":"This guy said we can change something.","image":"http://media.tumblr.com/140180900fa478744a4aef87f074a35c/tumblr_inline_mxin10s5xm1raprkq.gif"},
+{"message":"Ever wondered how maintenance works?","image":"http://media.tumblr.com/58d9ab164eb7c0021d3fe3af6194fb15/tumblr_inline_mx5mdoEN4E1raprkq.gif"},
+{"message":"This site is under maintenace","image":"http://i.imgur.com/1pkNeOy.gif"},
+{"message":"","image":"http://i.imgur.com/wofjBPL.gif"},
+{"message":"We are just retighten the screws","image":"http://i.imgur.com/wofjBPL.gif"},
+{"message":"","image":"http://media.tumblr.com/2d26c3af54d85d905f4b9e0fd357abdc/tumblr_inline_muztyzpsO51raprkq.gif"},
+{"message":"Are you sure it will work again?","image":"http://i.imgur.com/MUHWVV4.gif"},
+{"message":"Adding some glitter to the application.","image":"http://i.imgur.com/0kuLwdM.gif"},
+{"message":"We are deploying atm.","image":"http://i.imgur.com/hM9lqGh.gif"},
+        ];
+
+        var random = randomIntFromInterval(0,data.length-1);
+
+        document.getElementById("image").src=data[random].image;
+        document.getElementById("message").innerHTML=data[random].message;
+
+    </script>
+</html>
