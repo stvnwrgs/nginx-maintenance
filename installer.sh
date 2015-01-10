@@ -28,7 +28,7 @@ cp ./maintenance /etc/init.d/maintenance
 cp ./000-maintenance /etc/nginx/sites-available/000-maintenance
 cp ./index.html $PATH_TO_WWW/index.html
 
-cat ./000-maintenance | sed -e "s/$SEARCH/$1/" >> /etc/nginx/sites-available/000-maintenance
+cat ./000-maintenance | sed -e "s/$SEARCH/$1/" > /etc/nginx/sites-available/000-maintenance
 echo "DONE!"
 echo ""
 echo "installed nginx-maintenance stat with /etc/init.d/maintenance start"
