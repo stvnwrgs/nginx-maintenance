@@ -30,24 +30,27 @@ if [ "$#" -eq 3 ]; then
         echo "ERROR! Wrong path to ssl cert or key"
         exit 1
     fi
-    $2="(print - "$2" | sed 's/\//\\\//g')"
-    $3="(print - "$3" | sed 's/\//\\\//g')"
     SSL_CERT="ssl_certificate_key $2;"
     SSL_KEY="ssl_certificate_key $3;"
 fi
 
-if [ ! -d "$PATH_TO_WWW" ]
+if [ ! -d "$PATH_TO_WWW" ]; then
     echo "creating $PATH_TO_WWW directory"
-    then mkdir -p $PATH_TO_WWW
+    #then mkdir -p $PATH_TO_WWW
+    #
 fi
-echo "copying files"
- ./index.html $PATH_TO_WWW/index.html
+
 
 cat ./000-maintenance | sed -e "s|{{servernames}}|$1|" > /tmp/maintenance.conf.a
 cat /tmp/maintenance.conf.a | sed -e "s|{{root}}|$PATH_TO_WWW|" > /tmp/maintenance.conf.b
 
-cat ./000-maintenance.conf.b | sed -e "s|ssl_certificate;|$SSL_CERT|" > /tmp/maintenance.conf.a
+cat /tmp/maintenance.conf.b | sed -e "s|ssl_certificate;|$SSL_CERT|" > /tmp/maintenance.conf.a
 cat /tmp/maintenance.conf.a | sed -e "s|ssl_certificate_key;|$SSL_KEY|" > /tmp/maintenance.conf.b
+
+exit 0
+
+echo "copying files"
+cp ./index.html $PATH_TO_WWW/index.html
 
 cp /tmp/maintenance.conf.b /etc/nginx/sites-available/000-maintenance
 echo "DONE!"
