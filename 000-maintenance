@@ -1,6 +1,11 @@
 server {
     listen		80;
+    listen 443 ssl;
     server_name	{{servernames}};
+
+    ssl_certificate;
+    ssl_certificate_key;
+
     root {{root}};
     access_log  /var/log/nginx/maintenance.access.log;
     error_log   /var/log/nginx/maintenance.error.log;
@@ -14,14 +19,4 @@ server {
     location @maintenance {
         rewrite ^(.*)$ /index.html break;
     }
-}
-
-server {
-    listen 443 ssl;
-    server_name {{servernames}};
-
-    ssl_certificate;
-    ssl_certificate_key;
-
-    return 307 http://$server_name$request_uri;
 }
