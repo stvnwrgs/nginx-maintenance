@@ -30,7 +30,8 @@ if [ "$#" -eq 3 ]; then
         echo "ERROR! Wrong path to ssl cert or key"
         exit 1
     fi
-
+    $2="(print - "$2" | sed 's/\//\\\//g')"
+    $3="(print - "$3" | sed 's/\//\\\//g')"
     SSL_CERT="ssl_certificate_key $2;"
     SSL_KEY="ssl_certificate_key $3;"
 fi
@@ -44,11 +45,12 @@ cp ./maintenance /etc/init.d/maintenance
 cp ./000-maintenance /etc/nginx/sites-available/000-maintenance
 cp ./index.html $PATH_TO_WWW/index.html
 
-cat ./000-maintenance | sed -e "s/{{servernames}}/\$1/" > /tmp/maintenace.conf
-cat /tmp/maintenace.conf | sed -e "s/{{root}}/\$PATH_TO_WWW/" > /tmp/maintenace.conf
+cat ./000-maintenance | sed -e "s/{{servernames}}/$1/" > /tmp/maintenace.conf
+$PATH_TO_WWW="(print - "$PATH_TO_WWW" | sed 's/\//\\\//g')"
+cat /tmp/maintenace.conf | sed -e "s/{{root}}/$PATH_TO_WWW/" > /tmp/maintenace.conf
 
-cat ./000-maintenance | sed -e "s/ssl_certificate;/\$SSL_CERT/" > /tmp/maintenace.conf
-cat /tmp/maintenace.conf | sed -e "s/ssl_certificate_key;/\$SSL_KEY/" > /tmp/maintenace.conf
+cat ./000-maintenance | sed -e "s/ssl_certificate;g/$SSL_CERT/" > /tmp/maintenace.conf
+cat /tmp/maintenace.conf | sed -e "s/ssl_certificate_key;/$SSL_KEY/" > /tmp/maintenace.conf
 
 cp /tmp/maintenace.conf /etc/nginx/sites-available/000-maintenance
 echo "DONE!"
